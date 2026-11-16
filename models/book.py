@@ -20,6 +20,33 @@ class Book:
         self.date_borrowed = date_borrowed
         self.is_available = is_available
 
+    @classmethod
+    def from_dict(cls, data: dict):
+        """Construct a book from a dict import (from a CSV file)"""
+        date_borrowed = data.get("date_borrowed", "")
+        parsed_date = (
+            datetime.datetime.fromisoformat(date_borrowed)
+            if date_borrowed
+            else None
+        )
+        return cls(
+            book_id=int(data["book_id"]),
+            title=data["title"],
+            author=data["author"],
+            genre=data["genre"],
+            date_borrowed=parsed_date,
+            is_available=str(data["is_available"]).lower() == "true",
+        )
+    
+    def __str__(self) -> str:
+        """Return a string representation of the book instance."""
+        status = (
+            "Available"
+            if self.is_available
+            else f"Checked out ({self.date_borrowed:%Y-%m-%d})"
+        )
+        return f"[{self.book_id}] {self.title} by {self.author} ({self.genre}) - {status}"
+
     def check_out(self) -> None:
         """Mark the book as checked out with the current time stamped as the date borrowed."""
         if self.is_available:
@@ -62,29 +89,4 @@ class Book:
             "is_available": "True" if self.is_available else "False",
         }
 
-    @classmethod
-    def from_dict(cls, data: dict):
-        """Construct a book from a dict import (from a CSV file)"""
-        date_borrowed = data.get("date_borrowed", "")
-        parsed_date = (
-            datetime.datetime.fromisoformat(date_borrowed)
-            if date_borrowed
-            else None
-        )
-        return cls(
-            book_id=data["book_id"],
-            title=data["title"],
-            author=data["author"],
-            genre=data["genre"],
-            date_borrowed=parsed_date,
-            is_available=str(data["is_available"]).lower() == "true",
-        )
-
-    def __str__(self) -> str:
-        """Return a string representation of the book instance."""
-        status = (
-            "Available"
-            if self.is_available
-            else f"Checked out ({self.date_borrowed:%Y-%m-%d})"
-        )
-        return f"[{self.book_id}] {self.title} by {self.author} ({self.genre}) - {status}"
+    
