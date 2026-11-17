@@ -2,19 +2,20 @@ from models.book import Book
 
 
 class Shelf:
+    """Represents Objects of the Shelf Class"""
 
     def __init__(
         self,
         shelf_id: int,
         genre: str,
         capacity: int,
-        books: list[Book] = books if books is not None else [],
+        books: list[Book] | None = None,
     ):
         """Initialize an instance of a Shelf object"""
         self.shelf_id = shelf_id
         self.genre = genre
         self.capacity = capacity
-        self.books = books
+        self.books = books if books is not None else []
 
     @classmethod
     def from_dict(cls, data: dict):
