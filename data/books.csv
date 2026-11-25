@@ -1,0 +1,6 @@
+book_id,title,author,genre,date_borrowed,is_available
+101,Dune,Frank Herbert,Sci-Fi,2026-11-25T22:37:23.690344,False
+102,Neuromancer,William Gibson,Sci-Fi,,True
+103,Project Hail Mary,Andy Weir,Sci-Fi,,True
+201,The Hobbit,J.R.R. Tolkien,Fantasy,2026-11-25T22:37:23.690344,False
+202,Mistborn,Brandon Sanderson,Fantasy,,True

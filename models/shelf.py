@@ -118,5 +118,5 @@ class Shelf:
             "shelf_id": self.shelf_id,
             "genre": self.genre,
             "capacity": self.capacity,
-            "books": book_list,
+            "book_ids": book_list,
         }

@@ -59,6 +59,7 @@ class Member:
     def return_book(self, book_id: int) -> None:
         """
         - Takes a Book out of a Member's posession if they have it
+        - raises an error if that book is not being borrowed ny the Member
         - saves a record of that lease in that member's History
         - returns that Book to make it available again
         """

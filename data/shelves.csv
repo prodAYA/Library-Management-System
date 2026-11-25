@@ -1,0 +1,3 @@
+shelf_id,genre,capacity,book_ids
+1,Sci-Fi,5,101;102;103
+2,Fantasy,5,201;202
